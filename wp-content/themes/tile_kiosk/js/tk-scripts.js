@@ -358,6 +358,16 @@ function tk_header_interaction(){
 	});
 	
 	
+	// SCROLL POSITION
+	jQuery( document ).on( 'scroll', function(){
+		if( jQuery( this ).scrollTop() > jQuery( window ).height() ){
+			jQuery( 'body' ).addClass( 'detached' )
+		}
+		else{
+			jQuery( 'body' ).removeClass( 'detached' )
+		}
+	});
+	
 	// INIT 
 	tk_marquee( marquee ); // init marquee
 	
