@@ -1403,7 +1403,7 @@ body.view-info{
 
 .section-footer{
 	margin-top: 100px;
-	padding-bottom: 10vh;
+	padding-bottom: 20vh;
 }
 
 #menu-footer-menu{
@@ -1752,6 +1752,7 @@ body.view-info{
 
 .modal .tk-buy{
 	grid-area: buy;
+	position: relative;
 }
 
 .modal .tk-modal-close{
@@ -1977,12 +1978,20 @@ body.view-info{
 	display: grid !important;
 	grid-template-columns: repeat( 3, 1fr );
 	grid-template-rows: repeat( 6, 1fr );
+/*	
 	grid-template-areas: "variant variant variant"
                          "variant variant variant"
                          "variant variant variant"
                          "variant variant variant"
                          "quant   quant   quant"
                          "btn     btn     btn";
+*/
+	grid-template-areas: "variant variant variant"
+                         "variant variant variant"
+                         "variant variant variant"
+                         "variant variant variant"
+                         "quant   btn     btn"
+                         ".       .       .";
 	height: 100%;
 	padding-bottom: var(--space-m);
 }
@@ -2317,19 +2326,18 @@ body.view-info{
 	.modal .tk-compontents-wrapper{
 		grid-template-columns: repeat( 4, 1fr );
 		grid-template-rows: repeat( 12, 1fr );	
-		grid-template-areas: "title title title title"
+		grid-template-areas: "title   title   title   title"
                              "gallery gallery gallery gallery"
                              "gallery gallery gallery gallery"
                              "gallery gallery gallery gallery"
                              "gallery gallery gallery gallery"
                              "gallery gallery gallery gallery"
-                             "price price price price"			
-                             "desc desc desc desc"
+                             "gallery gallery gallery gallery"
                              "desc    desc    desc    desc"
-                             "buy     buy     buy     buy"
+                             "desc    desc    desc    desc"
+                             "price   price   price   price"
                              "buy     buy     buy     buy"
                              "buy     buy     buy     buy";
-		padding-bottom: 50px;
 	}
 	
 	.wps-component-products-images{
@@ -2348,6 +2356,18 @@ body.view-info{
 	{
 		width: 100%;
 	}
+	
+	.wps-component-products-quantity,
+	.wps-component-products-add-button
+	{
+		position: absolute;
+	}
+	
+	.wps-component-products-add-button{
+		right: 0;
+		width: 200px;
+	}	
+	
 	
 	#tk-filter-form{
 		padding-right: 70px !important;

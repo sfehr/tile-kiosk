@@ -700,24 +700,35 @@ function tk_get_svg( $svg ){
  */
 function tk_custom_head(){
 	
+	// GTM
+	print "		
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-PWFWW76');</script>
+		<!-- End Google Tag Manager -->
+	";
+	
 	// for EN typeface
-	echo '<link rel="stylesheet" href="https://use.typekit.net/wlv6frg.css">';
+	print '<link rel="stylesheet" href="https://use.typekit.net/wlv6frg.css">';
 	
 	// for JP typeface
-	if ( function_exists( 'pll_current_language' ) && ( pll_default_language() != pll_current_language() ) ){	
-		echo "
+//	if ( function_exists( 'pll_current_language' ) && ( pll_default_language() != pll_current_language() ) ){	
+	print '
 			<script>
 			  (function(d) {
 				var config = {
-				  kitId: 'ept0bzo',
+				  kitId: \'ept0bzo\',
 				  scriptTimeout: 3000,
 				  async: true
 				},
-				h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,\"\")+\" wf-inactive\";},config.scriptTimeout),tk=d.createElement(\"script\"),f=false,s=d.getElementsByTagName(\"script\")[0],a;h.className+=\" wf-loading\";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!=\"complete\"&&a!=\"loaded\")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+				h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src=\'https://use.typekit.net/\'+config.kitId+\'.js\';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
 			  })(document);
 			</script>
-		";
-	}	
+		';
+//	}	
 }
 add_action( 'wp_head', 'tk_custom_head' );
 
