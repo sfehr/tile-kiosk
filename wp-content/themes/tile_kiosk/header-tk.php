@@ -90,7 +90,7 @@
 							<input type="checkbox" id="filter-use-object" name="tk_filter[use]" value="use?object">
 							<div class="control_indicator"></div>
 						</label>
-						<label for="filter-use-stand" class="control control-checkbox"><?php esc_html_e( 'Stand', tk_get_theme_text_domain() ); ?>
+						<label for="filter-use-stand" class="control control-checkbox"><?php esc_html_e( 'Tool-stand', tk_get_theme_text_domain() ); ?>
 							<input type="checkbox" id="filter-use-stand" name="tk_filter[use]" value="use?stand">
 							<div class="control_indicator"></div>
 						</label>
