@@ -613,7 +613,7 @@ function tk_after_rendering( post_id ){
 		post.attr( 'data-tk-bg', 'true' );
 	}
 	
-	// add css clase for fade in effect
+	// add css class for fade in effect
 	img.on( 'load', function(){
 		jQuery( this ).parents( 'article' ).addClass( 'fade-in' );
 	});

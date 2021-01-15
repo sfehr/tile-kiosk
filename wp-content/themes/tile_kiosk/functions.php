@@ -729,6 +729,28 @@ function tk_custom_head(){
 			</script>
 		';
 //	}	
+	
+	// Social Media
+	echo '
+	<!-- Primary Meta Tags -->
+	<title>TILE KIOSK</title>
+	<meta name="title" content="TILE KIOSK">
+	<meta name="description" content="Tiles tiles tiles! Shop for single tiles made in Tajimi, Japan.">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://tile-kiosk.jp/">
+	<meta property="og:title" content="TILE KIOSK">
+	<meta property="og:description" content="Tiles tiles tiles! Shop for single tiles made in Tajimi, Japan.">
+	<meta property="og:image" content="https://tile-kiosk.jp/wp/wp-content/uploads/2021/01/TK_Logo_type_og.png">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://tile-kiosk.jp/">
+	<meta property="twitter:title" content="TILE KIOSK">
+	<meta property="twitter:description" content="Tiles tiles tiles! Shop for single tiles made in Tajimi, Japan.">
+	<meta property="twitter:image" content="https://tile-kiosk.jp/wp/wp-content/uploads/2021/01/TK_Logo_type_og.png">
+	';	
 }
 add_action( 'wp_head', 'tk_custom_head' );
 

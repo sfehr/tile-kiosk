@@ -1551,10 +1551,18 @@ body.view-info{
 	min-height: calc( var(--grid-column) * 2 );
 	background-position: center;
 	background-size: contain;
+	min-height: 100%;
 }
 
 .type-wps_products .tk-preview .tk-gallery .wps-product-image-wrapper{
 	display: none;
+}
+
+.type-wps_products:not(.modal) .tk-gallery div{
+	display: flex;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 
 .type-wps_products .tk-pricing{
@@ -2068,8 +2076,45 @@ body.view-info{
 .wps-product-image-sold-out-label{
 	z-index: 3;
 	background: none !important;
-	border: 1px solid black !important;
+/*	border: 1px solid black !important; */
 	color: black !important;
+}
+
+
+.wps-product-image-sold-out-label{
+	z-index: 3;
+	background: none !important;
+	width: 100%;
+	height: 100%;
+	padding: 0 !important;
+	margin: 0 !important;
+	font-size: 0 !important;
+}
+
+.modal .wps-product-image-sold-out-label{
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.wps-product-image-sold-out-label::before,
+.wps-product-image-sold-out-label::after
+{
+	position: absolute;
+	content: '';
+	height: 100% !important;
+	width: 1px;
+	background-color: black;
+	left: 50% !important;
+}
+
+.wps-product-image-sold-out-label::before
+{
+	transform: rotate(45deg);
+}
+
+.wps-product-image-sold-out-label::after
+{
+	transform: rotate(-45deg);  
 }
 
 
