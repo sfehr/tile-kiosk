@@ -18,6 +18,7 @@ $section_head_id = tk_get_ID_by_slug( 'section-head' );
 $section_about_id = tk_get_ID_by_slug( 'about-section' );
 $section_contact_id = tk_get_ID_by_slug( 'contact-section' );
 $showcase_images = tk_get_images( 'tk_showcase_image', $section_head_id, 'itm-showcase' ); // meta_key, post_id, css-class, img-size
+$showcase_svg_maps = tk_get_svg_data( 'tk_svg_maps_image', $section_head_id, 'itm-showcase' ); // meta_key, post_id, css-class, img-size
 $showcase_movies = tk_get_movies( 'tk_movies_group', $section_head_id, 'itm-showcase' ); // meta_key, post_id, css-class, img-size
 ?>
 
@@ -33,18 +34,29 @@ $showcase_movies = tk_get_movies( 'tk_movies_group', $section_head_id, 'itm-show
 				<?php 
 				echo apply_filters( 'the_content', get_post( $section_contact_id ) -> post_content );
 				?>
-			</div>			
+			</div>
+			<div class="entry-content section-footer">
+				<?php 
+				wp_nav_menu( array( 'theme_location' => 'tk-footer-menu' ) );
+				?>				
+			</div>	
 		</section>		
 
 		<section id="tk-showcase" class="page-section">
-			<?php 
-			echo $showcase_images;
-			echo $showcase_movies;
-			?>
+			<div class="section-wrapper">
+				<div class="itm-wrapper">
+					<?php 
+					echo $showcase_images;
+					echo $showcase_movies;
+					echo $showcase_svg_maps;
+					?>
+				</div>
+			</div>	
 		</section>
 		
 		<section id="tk-tiles" class="page-section">
 		<?php
+/*			
 		if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) :
@@ -55,15 +67,10 @@ $showcase_movies = tk_get_movies( 'tk_movies_group', $section_head_id, 'itm-show
 				<?php
 			endif;
 
-			/* Start the Loop */
+			// Start the Loop
 			while ( have_posts() ) :
 				the_post();
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
 				get_template_part( 'template-parts/content', get_post_type() );
 
 			endwhile;
@@ -75,6 +82,9 @@ $showcase_movies = tk_get_movies( 'tk_movies_group', $section_head_id, 'itm-show
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
+*/			
+			
+			sf_ajax_loader_handler();
 		
 		?>
 		</section>

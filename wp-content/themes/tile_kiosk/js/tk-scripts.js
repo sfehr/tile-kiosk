@@ -23,7 +23,9 @@
  * tk_scroll_to()						 | Scrolls to anchor element in DOM
  * tk_shuffle_array() 					 | Shuffles the keys of an array
  * tk_filter_interaction() 				 | Handles interaction of the filter
- * tk_after_rendering()					 | Handles product interaction after it has been rendered
+ * tk_after_rendering()					 | Handles product interaction after it has been rendered 
+ * tk_map_svg()							 | Maps SVG images over showcasce image
+ * tk_intersection_observer()			 | Checks if an element is in viewport
  *
  *
  *  
@@ -57,7 +59,9 @@ jQuery( document ).ready(
 	tk_header_interaction(),
 //	tk_showcase_slider(),
 	tk_showcase_interaction(),
-	tk_filter_interaction()
+	tk_filter_interaction(),
+	tk_map_svg(),
+	tk_intersection_observer()
 	
 );
 
@@ -136,8 +140,19 @@ wp.hooks.addFilter( 'misc.pricing.defaultCurrencyCode', 'wpshopify', function ( 
 });
 
 // LEFT IN STOCK
-wp.hooks.addFilter('misc.inventory.leftInStock.total', 'wpshopify', function (leftInStockTotal) {
+wp.hooks.addFilter( 'misc.inventory.leftInStock.total', 'wpshopify', function (leftInStockTotal) {
   return 1;
+});
+
+// MAX QUANTITY
+wp.hooks.addAction( 'after.cart.ready', 'wpshopify', function ( cartState ) {
+  wp.hooks.addFilter( 'cart.lineItems.maxQuantity', 'wpshopify', function (
+    maxQuantity,
+    cartState,
+    lineItem
+  ) {
+    return 1;
+  });
 });
 
 
@@ -360,7 +375,10 @@ function tk_header_interaction(){
 	
 	// SCROLL POSITION
 	jQuery( document ).on( 'scroll', function(){
-		if( jQuery( this ).scrollTop() > jQuery( window ).height() ){
+		
+		var distance = jQuery( '#tk-showcase' ).height();
+		
+		if( jQuery( this ).scrollTop() > distance ){
 			jQuery( 'body' ).addClass( 'detached' )
 		}
 		else{
@@ -471,7 +489,9 @@ function tk_showcase_interaction(){
 	// call shuffle
 	container.html( shuffledContainer ); // exchange to random order
 	// call auto scroll
-	sf_auto_scroll( showcase, 1, true );
+//	sf_auto_scroll( showcase, 1, true );
+	// call horizontal scroll
+	tk_horizontal_scroll();
 	
 }
 
@@ -563,6 +583,62 @@ function tk_shuffle_array( array ) {
 
 
 
+/* HORIZONTAL SCROLL
+ *
+ * Lets a scroll container scroll horizontally
+ *
+ */
+function tk_horizontal_scroll(){
+	
+	// CONDITIONAL
+	if( tk_is_coarse ){
+		
+		var showcase = document.querySelector( '#tk-showcase' );
+		sf_auto_scroll( showcase, 1, true );
+		return; // early escape if mobile device is detected
+	}
+	
+	// UNITS
+	var vw = window.innerWidth;
+	var vh = window.innerHeight;
+	var container = jQuery( '#tk-showcase .section-wrapper' );
+	var wrapper = jQuery( container ).find( '.itm-wrapper' );
+	var children = wrapper.find( '.entry-media' ).not( '.itm-svg-map' );
+	var numChildren = children.length;
+	var	style = window.getComputedStyle( children[ 0 ] );
+	var	gap = style.getPropertyValue( 'margin-right' ).replace( 'px', '' );	
+	var gapTotal = ( numChildren - 1 ) * gap;
+	var containerHeight = ( ( numChildren * vw + gapTotal ) - vw + vh );
+	
+	// adjust height of the sticky container to have enough scroll space
+//	jQuery( container ).height( containerHeight );
+	jQuery( '#tk-showcase' ).height( containerHeight );
+		
+	jQuery( document ).on( 'scroll', function( event ){ // depending on the position property the event should listen to document
+		
+		var scrollTop = jQuery( document ).scrollTop();
+		
+		if( scrollTop < ( containerHeight - vh ) ){
+			
+			// scroll left
+//			jQuery( container ).scrollLeft( scrollTop );
+			
+			// translateX
+			jQuery( wrapper ).css({
+				'transform': 'translateX(-' + scrollTop + 'px)',
+			});
+			
+		}
+		else{
+			jQuery( wrapper ).css({
+				'transform': 'translateX(-' + ( containerHeight - vh ) + 'px)',
+			});			
+		}
+	});
+}
+
+
+
 /* FILTER INTERACTION
  *
  * Handles interaction of the filter
@@ -624,7 +700,7 @@ function tk_after_rendering( post_id ){
 
 /* FADE IN FOLLOW UP
  *
- * Checks weather all fade-in classes are set 
+ * Checks wether all fade-in classes are set 
  *
  */
 function tk_fade_in_followup(){
@@ -650,4 +726,86 @@ function tk_fade_in_followup(){
 			tk_intervall = false;
 		}
 	}
+}
+
+
+
+/* MAP SVG IMAGES
+ *
+ * Combines the SVG maps with the related image
+ *
+ */
+function tk_map_svg(){
+	
+	const svgAll = document.querySelectorAll( '.itm-svg-map' );
+	
+	svgAll.forEach( (svg) => {
+		const name = svg.dataset.name;
+		const target = document.querySelector( '.itm-img[data-name="' + name + '"]' );
+		
+		if( target ){
+		   target.appendChild( svg );
+		}		
+	});
+	
+}
+
+
+
+/* INTERSECTION OBSERVER
+ *
+ * Checks if an element is in viewport
+ *
+ */
+function tk_intersection_observer(){
+	
+	const numSteps = 20.0;
+
+	let boxElementAll;
+
+	// Set things up
+	window.addEventListener(　'load', (　event　) => {
+		boxElementAll = document.querySelectorAll( '.itm-svg-map .tk-svg-tag' );
+		createObserver();
+	}, false );
+	
+	function createObserver() {
+		
+		let observer;
+		let options = {
+			root: null,
+//			rootMargin: '-100px -100px -100px -100px',
+			rootMargin: '0px',
+			threshold: buildThresholdList()
+	  };
+
+		observer = new IntersectionObserver( handleIntersect, options );
+		boxElementAll.forEach( boxElement => observer.observe( boxElement ) );
+	}
+	
+	function buildThresholdList() {
+		let thresholds = [];
+		let numSteps = 100;
+
+		for ( let i = 1.0; i <= numSteps; i++) {
+			let ratio = i/numSteps;
+			thresholds.push( ratio );
+		}
+
+		thresholds.push( 0 );
+		return thresholds;
+	}
+	
+	function handleIntersect( entries, observer ) {
+		
+		entries.forEach( ( entry ) => {
+			
+			if ( entry.isIntersecting ){
+				
+				let n = entry.intersectionRatio;
+				entry.target.style.opacity = n;
+				entry.target.style.transform = 'scale( ' + n + ' )';
+			}
+		});
+	}	
 }

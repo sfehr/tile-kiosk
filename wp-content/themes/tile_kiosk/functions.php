@@ -17,6 +17,7 @@
  * sf_ajax_loader_handler() 			 | Ajax handler for loading and filtering posts
  * tk_get_images() 						 | Get custom field values: file list images  
  * tk_get_movies()						 | Get custom field values: oembed
+ * tk_get_svg_data()					 | Get custom field values: file list svgs
  * tk_get_svg()							 | Store the SVG markup in a function
  * tk_custom_head()						 | Customize the sites head tag
  * tk_custom_img_sizes()				 | adding custom image sizes  
@@ -460,7 +461,8 @@ function tk_get_images( $meta_key, $post_id = '', $class = '', $img_size = '' ){
 			$img = wp_get_attachment_image( $attachment_id, $img_size );
 			$img_src = wp_get_attachment_image_src( $attachment_id, $img_size );
 			$orientation = ( $img_src[ 1 ] <= $img_src[ 2 ] ) ? 'portrait' : 'landscape'; // 1->width, 2->height
-			$images[] = '<div class="entry-media itm-img ' . $orientation . $class . '">' . $img . '</div>';
+			$img_name = get_post( $attachment_id )->post_title;
+			$images[] = '<div class="entry-media itm-img ' . $orientation . $class . '" data-name="' . $img_name . '">' . $img . '</div>';
 		}	
 
 		$data = implode( '', $images );
@@ -501,6 +503,40 @@ function tk_get_movies( $meta_key, $post_id = '', $class = '' ){
 	return $data;
 }
 
+
+
+/** SF:
+ * Get custom field values: file list images
+ * @params	string $meta_key	int $post_id	string $class	string $img_size 
+ * @return  string image data
+ */
+function tk_get_svg_data( $meta_key, $post_id = '', $class = '', $img_size = '' ){
+	
+	// VARS
+	$post_id = !empty( $post_id ) ? $post_id : get_the_ID();
+	$data = '';
+	$images = array();
+	$class = !empty( $class ) ? ' ' . $class : '' ;
+	
+	// GET FIELD
+	$files = get_post_meta( $post_id, $meta_key, 1 );
+
+	// LOOP
+	if( !empty( $files ) ){	
+		foreach ( (array) $files as $attachment_id => $attachment_url ) {
+			$svg = wp_get_attachment_image( $attachment_id, $img_size );
+			$svg_src = wp_get_attachment_image_src( $attachment_id, $img_size );
+			$svg_data = file_get_contents( $svg_src[ 0 ] );
+			$svg_name = get_post( $attachment_id )->post_title;
+//			$object = '<object type="image/svg+xml" data="' . $svg_src[ 0 ] . '"></object>';
+			$images[] = '<div class="entry-media itm-svg-map ' . $class . '" data-name="' . $svg_name . '">' . $svg_data . '</div>';
+		}	
+
+		$data = implode( '', $images );
+	}	
+	
+	return $data;
+}
 
 
 /** SF:
@@ -701,6 +737,8 @@ function tk_get_svg( $svg ){
 function tk_custom_head(){
 	
 	// GTM
+	print '<!-- Google Tag Manager -->';
+	// GTM SF
 	print "		
 		<!-- Google Tag Manager -->
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -708,8 +746,18 @@ function tk_custom_head(){
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-PWFWW76');</script>
-		<!-- End Google Tag Manager -->
 	";
+	// GTM Xs
+	print "
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore
+		(j,f);
+		})(window,document,'script','dataLayer','GTM-KJ96SVC');</script>
+	";
+	print '<!-- End Google Tag Manager -->';
+	
 	
 	// for EN typeface
 	print '<link rel="stylesheet" href="https://use.typekit.net/wlv6frg.css">';

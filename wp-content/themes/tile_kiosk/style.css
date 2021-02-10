@@ -1013,13 +1013,14 @@ textarea {
 html,
 body
 {
-	overflow-x: hidden;
+/*	overflow-x: hidden; */
 }
 
 body{
 	font-family: var(--type-face);
 	color: var(--ui-text-color);
 	overflow-x: hidden;
+	max-width: 100vw;
 }
 
 a,
@@ -1423,24 +1424,28 @@ body.view-info{
 --------------------------------------------------------------*/
 
 #tk-showcase{
-	position: fixed;
-	top: 0;
 	width: 100%;
-	height: 100vh;
-	overflow: scroll hidden; 
 	transition: opacity ease-in-out 0.5s;
 }
 
 .detached #tk-showcase{
-	opacity: 0;
+	opacity: 0; 
+}
+
+#tk-showcase .section-wrapper{
+	position: fixed;
+	width: 100vw;
+	height: 100vh;	
+	top: 0;
+	overflow: hidden;
 }
 
 #tk-showcase .itm-wrapper{
 	display: flex;
-	position: absolute;
 }
 
 #tk-showcase .entry-media{
+	position: relative;
 	margin-right: 5px;
 }
 
@@ -1471,20 +1476,39 @@ body.view-info{
     transform: translate(-50%, -50%); /* % of current element */
 }
 
-/*
-#tk-showcase .itm-wrapper{
-	animation-name: slider;
-	animation-duration: 10s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
+#tk-showcase .itm-svg-map{
+/*	display: none; */
+	display: flex;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	padding-top: 66.66%; /* 3:2 Aspect Ratio (divide 2 by 3 = 0.6666)  */
 }
 
-@keyframes slider {
-	0% { transform: translateX( 0px ); }
-	50% { transform: translateX( calc( ( var(--slider-width) * -1 ) + 100vw ) ); }
-	100% { transform: translateX( 0px ); }
+#tk-showcase .itm-svg-map svg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;	
+	min-height: 100vh;
+	height: 0;
 }
-*/
+
+#tk-showcase .itm-svg-map svg .tk-svg-tag{
+	transform-origin: center;
+	transform-box: fill-box;
+	transform: scale(1);
+	transition: transform ease-in-out 0.25s; 
+	
+}
+
+.tk-svg-tag:hover{
+	transform: scale(1.5) !important;
+}
 
 
 /*--------------------------------------------------------------
@@ -1492,7 +1516,7 @@ body.view-info{
 --------------------------------------------------------------*/
 #tk-tiles{
     display: grid;
-	position: relative;
+/*	position: relative; */
     grid-template-columns: var(--grid-setting);
 	grid-template-rows: var(--grid-setting);
     grid-gap: 0px;
@@ -1500,7 +1524,7 @@ body.view-info{
 	width: 100%;
 	max-width: unset;
 	min-height: calc( var(--grid-column) * 2 );
-	margin-top: 100vh;
+	margin-top: 20vh;
 	padding-bottom: 35px;
 	background: white;
 }
@@ -1540,18 +1564,17 @@ body.view-info{
 .type-wps_products{
 	opacity: 0;
 	transition: opacity ease-in 500ms;
+	
+	position: relative;
+	background-position: center;
+	background-size: contain;
+	min-height: 100%;
+	grid-column: span 2;
+	grid-row: span 2;
 }
 
 .fade-in{
 	opacity: 1;
-}
-
-.type-wps_products{
-	position: relative;
-	min-height: calc( var(--grid-column) * 2 );
-	background-position: center;
-	background-size: contain;
-	min-height: 100%;
 }
 
 .type-wps_products .tk-preview .tk-gallery .wps-product-image-wrapper{
@@ -2240,6 +2263,11 @@ body.view-info{
 	
 	.view-filter #tk-filter-form{
 		padding-right: 90px;
+	}
+	
+	.type-wps_products{
+		grid-column: unset;
+		grid-row: unset;
 	}	
 	
 	.modal .tk-compontents-wrapper {
@@ -2450,50 +2478,39 @@ body.view-info{
 		width: auto;
 	}
 	
-}
-
-/*
-@media screen and (pointer: coarse) and (orientation: portrait) {
-	
-	.entry-media{
-		display: flex !important;
+	#tk-showcase .itm-mov{
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
 	}
 
-	.entry-media img{
-		width: auto;
-		height: 50vh;
-
-		object-fit: cover;
-		object-position: center;
-	}
-
-	
-	.entry-media img{
-	  animation: tween-position 40s infinite linear;
-	}
-
-	@keyframes tween-position{
-		
-	  0%{
-		object-position: center;
-	  }	
-
-	  25%{
-		object-position: right;
-	  }	
-
-	  50%{
-		object-position: center;
-	  }
-		
-	  75%{
-		object-position: left;
-	  }
-		
-	  100%{
-		object-position: center;
-	  }
-				
+	.itm-mov iframe{
+		max-width: unset;
+		max-height: unset;
 	}	
+	
 }
-*/	
+
+
+@media screen and (pointer: coarse) {
+	
+	#tk-showcase{
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		overflow: scroll hidden;
+	}
+	
+	#tk-showcase .section-wrapper{
+		position: relative;
+		overflow: unset;
+	}
+	
+	#tk-tiles{
+		position: relative;
+	}
+	
+
+}
+	
