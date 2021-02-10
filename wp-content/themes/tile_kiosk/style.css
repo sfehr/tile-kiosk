@@ -1461,19 +1461,19 @@ body.view-info{
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
+	
+	min-width: 100vw;
+	min-height: 100vh;	
 }	
 
 #tk-showcase iframe{
     position: absolute;
     height: 100%;
-    width: 177.77777778vh; /* 100 * 16 / 9 */
-/*	width: 150vh; /* 100 * 2 / 3 */
-    min-width: 100%;
-    min-height: 56.25vw; /* 100 * 9 / 16 */
-/*	min-height: 66.67vw; /* 100 * 3 / 2 */
-    left: 50%; /* % of surrounding element */
+    min-width: 150vw;
+    min-height: 56.25vh; /* 100 * 9 / 16 */
+	min-height: 66.67vw; /* 100 * 3 / 2 */
     top: 50%;
-    transform: translate(-50%, -50%); /* % of current element */
+    transform: translate(-10%, -50%); /* % of current element */
 }
 
 #tk-showcase .itm-svg-map{

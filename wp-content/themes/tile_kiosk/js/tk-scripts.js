@@ -99,6 +99,8 @@ jQuery( window ).on( 'resize', function() {
 		jQuery( this ).height( jQuery( this ).width() );
 	});
 	
+	tk_horizontal_scroll();
+	
 });
 
 
@@ -745,7 +747,10 @@ function tk_map_svg(){
 		
 		if( target ){
 		   target.appendChild( svg );
-		}		
+		}
+		else{
+			svg.remove(); // remove item if corresponding image is not found
+		}
 	});
 	
 }
