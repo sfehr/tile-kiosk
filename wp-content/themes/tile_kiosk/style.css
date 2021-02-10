@@ -1477,8 +1477,7 @@ body.view-info{
 }
 
 #tk-showcase .itm-svg-map{
-/*	display: none; */
-	display: flex;
+	display: none;
 	position: absolute;
 	top: 0;
 	width: 100%;
@@ -1517,7 +1516,8 @@ body.view-info{
 #tk-tiles{
     display: grid;
 /*	position: relative; */
-    grid-template-columns: var(--grid-setting);
+/*  grid-template-columns: var(--grid-setting); */
+	grid-template-columns: repeat( auto-fill, minmax( calc( var(--grid-column) * 4 ), 1fr ) );
 	grid-template-rows: var(--grid-setting);
     grid-gap: 0px;
     grid-auto-flow: dense;
@@ -1569,8 +1569,10 @@ body.view-info{
 	background-position: center;
 	background-size: contain;
 	min-height: 100%;
+/*	
 	grid-column: span 2;
 	grid-row: span 2;
+*/
 }
 
 .fade-in{

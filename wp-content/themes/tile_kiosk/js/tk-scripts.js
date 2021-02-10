@@ -746,7 +746,8 @@ function tk_map_svg(){
 		const target = document.querySelector( '.itm-img[data-name="' + name + '"]' );
 		
 		if( target ){
-		   target.appendChild( svg );
+			svg.style.display = 'flex';
+			target.appendChild( svg );
 		}
 		else{
 			svg.remove(); // remove item if corresponding image is not found
