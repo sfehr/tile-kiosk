@@ -1523,7 +1523,8 @@ body.view-info{
     grid-auto-flow: dense;
 	width: 100%;
 	max-width: unset;
-	min-height: calc( var(--grid-column) * 2 );
+/*	min-height: calc( var(--grid-column) * 2 ); */
+	min-height: 100vh;
 	margin-top: 20vh;
 	padding-bottom: 35px;
 	background: white;

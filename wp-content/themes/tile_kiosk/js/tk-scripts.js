@@ -76,7 +76,8 @@ jQuery( document ).ajaxSuccess( function() {
 
 	tk_open_modal(),
 	sf_loadmore(),
-	tk_fade_in_followup()
+	tk_fade_in_followup(),
+	tk_scroll_to( '#tk-tiles' )
 	
 });
 

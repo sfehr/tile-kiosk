@@ -790,14 +790,14 @@ function tk_custom_head(){
 	<meta property="og:url" content="https://tile-kiosk.jp/">
 	<meta property="og:title" content="TILE KIOSK">
 	<meta property="og:description" content="Tiles tiles tiles! Shop for single tiles made in Tajimi, Japan.">
-	<meta property="og:image" content="https://tile-kiosk.jp/wp/wp-content/uploads/2021/01/TK_Logo_type_og.png">
+	<meta property="og:image" content="https://tile-kiosk.jp/wp/wp-content/uploads/2021/02/TK_postcard_s.jpg">
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image">
 	<meta property="twitter:url" content="https://tile-kiosk.jp/">
 	<meta property="twitter:title" content="TILE KIOSK">
 	<meta property="twitter:description" content="Tiles tiles tiles! Shop for single tiles made in Tajimi, Japan.">
-	<meta property="twitter:image" content="https://tile-kiosk.jp/wp/wp-content/uploads/2021/01/TK_Logo_type_og.png">
+	<meta property="twitter:image" content="https://tile-kiosk.jp/wp/wp-content/uploads/2021/02/TK_postcard_s.jpg">
 	';	
 }
 add_action( 'wp_head', 'tk_custom_head' );
