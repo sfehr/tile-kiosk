@@ -44,6 +44,7 @@ var tk_is_coarse = matchMedia( '(pointer:coarse)' ).matches;
 var tk_vw = Math.max( document.documentElement.clientWidth || 0, window.innerWidth || 0 );
 var tk_vh = Math.max( document.documentElement.clientHeight || 0, window.innerHeight || 0 );
 var { __, _x, _n, sprintf } = wp.i18n; // for internationalization
+var tk_timer = null
 
 
 
@@ -509,10 +510,11 @@ function tk_showcase_interaction(){
  *
  */
 function sf_auto_scroll( objectElement, scroll, horizontal ){
-
+	
 	// VARS
-	var timer = setInterval( scroll_move , 30 );
+	var timer = setInterval( scroll_move, 30 );
 	var timerTouch;
+
 	
 	// EVENTS
 	objectElement.addEventListener( 'touchstart', function(){
@@ -526,6 +528,7 @@ function sf_auto_scroll( objectElement, scroll, horizontal ){
 			clearInterval( timerTouch );
 		}, 1500 );
 	});
+	
 	
 	function scroll_move(){
 		
@@ -597,7 +600,7 @@ function tk_horizontal_scroll(){
 	if( tk_is_coarse ){
 		
 		var showcase = document.querySelector( '#tk-showcase' );
-		sf_auto_scroll( showcase, 1, true );
+		//sf_auto_scroll( showcase, 1, true );
 		return; // early escape if mobile device is detected
 	}
 	

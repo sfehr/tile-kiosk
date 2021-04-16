@@ -815,6 +815,10 @@ function tk_custom_img_sizes() {
 	
 	// disable max image size of 2560px
 	add_filter( 'big_image_size_threshold', '__return_false' );
+	
+	update_option( 'medium_large_size_w', 1000 );
+	update_option( 'medium_large_size_h', 1000 );
+
 }
 add_action( 'after_setup_theme', 'tk_custom_img_sizes' );
 
@@ -827,6 +831,22 @@ function tk_big_image_size( $threshold ) {
     return 3000; // new threshold
 }
 add_filter( 'big_image_size_threshold', 'tk_big_image_size', 100, 1 );
+
+
+
+/** SF:
+ * Redirect Single Custom Post Type Pages to Post Type Archive Page and 404 errors to homepage
+ */
+function tk_redirect_handler( $attr, $attachment = null ){
+	
+	// redirect 404 errors to homepage
+    if( is_404() ){
+        wp_redirect( home_url(), 301 );
+        exit();
+    }
+}
+add_action( 'template_redirect', 'tk_redirect_handler' );
+
 
 
 /*
