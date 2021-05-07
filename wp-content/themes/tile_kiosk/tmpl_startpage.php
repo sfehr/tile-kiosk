@@ -27,11 +27,25 @@ $showcase_movies = tk_get_movies( 'tk_movies_group', $section_head_id, 'itm-show
 		<section id="tk-info" class="page-section">
 			<div class="entry-content section-about">
 				<?php 
+				
+				// get translation
+				if ( function_exists( 'pll_current_language' ) && ( pll_default_language() != pll_current_language() ) && ( !empty( pll_get_post( $section_about_id, pll_current_language() ) ) ) ){
+					$section_about_id = pll_get_post( $section_about_id, pll_current_language() );
+				}
+				// get content
 				echo apply_filters( 'the_content', get_post( $section_about_id ) -> post_content ); 
+				
 				?>
 			</div>
 			<div class="entry-content section-contact">
 				<?php 
+				
+				// get translation
+				//if ( function_exists( 'pll_current_language' ) && ( pll_default_language() != pll_current_language() ) ){
+				if ( function_exists( 'pll_current_language' ) && ( pll_default_language() != pll_current_language() ) && ( !empty( pll_get_post( $section_contact_id, pll_current_language() ) ) ) ){
+					$section_contact_id = pll_get_post( $section_contact_id, pll_current_language() );
+				}
+				// get content			
 				echo apply_filters( 'the_content', get_post( $section_contact_id ) -> post_content );
 				?>
 			</div>
@@ -55,34 +69,7 @@ $showcase_movies = tk_get_movies( 'tk_movies_group', $section_head_id, 'itm-show
 		</section>
 		
 		<section id="tk-tiles" class="page-section">
-		<?php
-/*			
-		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
-			// Start the Loop
-			while ( have_posts() ) :
-				the_post();
-
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-//			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-*/			
+		<?php			
 			
 			sf_ajax_loader_handler();
 		
