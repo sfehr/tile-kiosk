@@ -808,16 +808,23 @@ add_action( 'wp_head', 'tk_custom_head' );
  * adding custom image sizes
  */
 function tk_custom_img_sizes() {	
-	add_image_size( 'tk-medium', 1200, 1200 );
-	add_image_size( 'tk-large', 1200, 1200 );
-	add_image_size( 'tk-extra-large', 1700, 1700 );
+	// add image size
 	add_image_size( 'tk-super-large', 3000, 3000 );
+	
+	// remove image size
+	remove_image_size( '1536x1536' );
 	
 	// disable max image size of 2560px
 	add_filter( 'big_image_size_threshold', '__return_false' );
 	
-	update_option( 'medium_large_size_w', 1000 );
-	update_option( 'medium_large_size_h', 1000 );
+	update_option( 'medium_size_w', 2000 );
+	update_option( 'medium_size_h', 2000 );
+	update_option( 'large_size_w', 2000 );
+	update_option( 'large_size_h', 2000 );
+	update_option( 'medium_large_size_w', 2000 );
+	update_option( 'medium_large_size_h', 2000 );
+	
+	
 
 }
 add_action( 'after_setup_theme', 'tk_custom_img_sizes' );

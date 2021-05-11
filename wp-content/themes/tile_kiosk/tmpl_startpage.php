@@ -41,7 +41,6 @@ $showcase_movies = tk_get_movies( 'tk_movies_group', $section_head_id, 'itm-show
 				<?php 
 				
 				// get translation
-				//if ( function_exists( 'pll_current_language' ) && ( pll_default_language() != pll_current_language() ) ){
 				if ( function_exists( 'pll_current_language' ) && ( pll_default_language() != pll_current_language() ) && ( !empty( pll_get_post( $section_contact_id, pll_current_language() ) ) ) ){
 					$section_contact_id = pll_get_post( $section_contact_id, pll_current_language() );
 				}
