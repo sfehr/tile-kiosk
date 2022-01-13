@@ -55,8 +55,8 @@ var tk_timer = null
  */ 
 jQuery( document ).ready(
 
-	tk_open_modal(),
-	sf_loadmore(),
+//	tk_open_modal(),
+//	sf_loadmore(),
 	tk_header_interaction(),
 //	tk_showcase_slider(),
 	tk_showcase_interaction(),

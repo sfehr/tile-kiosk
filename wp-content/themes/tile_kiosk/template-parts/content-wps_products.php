@@ -23,7 +23,7 @@ $Products->products(
 		'post_id' => $post->ID,
 		'pagination' => false,
 		'limit' => 1,
-		'max_quantity' => 1
+		'max_quantity' => 5
 	] )
 );
 

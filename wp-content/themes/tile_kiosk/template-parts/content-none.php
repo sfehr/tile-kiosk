@@ -11,7 +11,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'tile_kiosk' ); ?></h1>
+		<h1 class="page-title"><?php esc_html_e( 'No Tiles found', 'tile_kiosk' ); ?></h1>
 	</header><!-- .page-header -->
 
 	<div class="page-content">
@@ -41,9 +41,9 @@
 		else :
 			?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'tile_kiosk' ); ?></p>
+			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for.', 'tile_kiosk' ); ?></p>
 			<?php
-			get_search_form();
+//			get_search_form();
 
 		endif;
 		?>

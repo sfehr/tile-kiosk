@@ -844,7 +844,7 @@ add_filter( 'big_image_size_threshold', 'tk_big_image_size', 100, 1 );
 /** SF:
  * Redirect Single Custom Post Type Pages to Post Type Archive Page and 404 errors to homepage
  */
-function tk_redirect_handler( $attr, $attachment = null ){
+function tk_redirect_handler(){
 	
 	// redirect 404 errors to homepage
     if( is_404() ){

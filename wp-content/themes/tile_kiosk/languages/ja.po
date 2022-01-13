@@ -1,0 +1,342 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tile Kiosk\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_s\n"
+"POT-Creation-Date: 2020-12-21 14:08+0900\n"
+"PO-Revision-Date: 2021-01-13 13:49+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: __;_e;_x;_ex;esc_html__;esc_html_x;esc_attr__;"
+"esc_attr_e;esc_attr_x;date_i18n;number_format_i18n;translate_nooped_plural;"
+"_nx_noop;_n_noop;_nx;_n;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:21
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: 404.php:30
+msgid "Most Used Categories"
+msgstr ""
+
+#: 404.php:48
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: comments.php:35
+#, php-format
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#: comments.php:41
+#, php-format
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgstr ""
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:16
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: footer.php:19
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: footer.php:25
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: functions.php:73
+msgid "Primary"
+msgstr ""
+
+#: functions.php:74
+msgid "Footer"
+msgstr ""
+
+#: functions.php:148
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:150
+msgid "Add widgets here."
+msgstr ""
+
+#: functions.php:192 inc/tk-cmb2-functions.php:106
+msgid "Remove"
+msgstr "削除"
+
+#: functions.php:193
+msgid "Subtotal"
+msgstr "小計"
+
+#: functions.php:194
+msgid "Checkout"
+msgstr "チェックアウト"
+
+#: header-tk.php:26 header.php:26
+msgid "Skip to content"
+msgstr ""
+
+#: header-tk.php:60 header.php:49
+msgid "Primary Menu"
+msgstr ""
+
+#: header-tk.php:75
+msgid "Use"
+msgstr "使い方"
+
+#: header-tk.php:77
+msgid "Coaster"
+msgstr "コースター"
+
+#: header-tk.php:81
+msgid "Hashioki"
+msgstr "箸置き"
+
+#: header-tk.php:85
+msgid "Nabeshiki"
+msgstr "鍋敷き"
+
+#: header-tk.php:89
+msgid "Object"
+msgstr "オブジェ"
+
+#: header-tk.php:93
+msgid "Tool-stand"
+msgstr "ツールスタンド"
+
+#: header-tk.php:97
+msgid "Plate"
+msgstr "お皿"
+
+#: header-tk.php:101
+msgid "Tray"
+msgstr "トレー"
+
+#: header-tk.php:108
+msgid "Color"
+msgstr "色"
+
+#: header-tk.php:110
+msgid "Beige"
+msgstr "ベージュ"
+
+#: header-tk.php:114
+msgid "Black"
+msgstr "黒"
+
+#: header-tk.php:118
+msgid "Blue"
+msgstr "青"
+
+#: header-tk.php:122
+msgid "Brown"
+msgstr "茶色"
+
+#: header-tk.php:126
+msgid "Gray"
+msgstr "グレー"
+
+#: header-tk.php:130
+msgid "Green"
+msgstr "緑"
+
+#: header-tk.php:134
+msgid "Pink"
+msgstr "ピンク"
+
+#: header-tk.php:138
+msgid "Purple"
+msgstr "紫"
+
+#: header-tk.php:142
+msgid "Red"
+msgstr "赤"
+
+#: header-tk.php:146
+msgid "White"
+msgstr "白"
+
+#: header-tk.php:150
+msgid "Yellow"
+msgstr "黄色"
+
+#: header-tk.php:157
+msgid "Size"
+msgstr "サイズ"
+
+#: header-tk.php:159
+msgid "XS"
+msgstr ""
+
+#: header-tk.php:163
+msgid "S"
+msgstr ""
+
+#: header-tk.php:167
+msgid "M"
+msgstr ""
+
+#: header-tk.php:171
+msgid "L"
+msgstr ""
+
+#: header-tk.php:175
+msgid "XL"
+msgstr ""
+
+#: header-tk.php:182
+msgid "Clear Setting"
+msgstr "設定を消去する"
+
+#: inc/template-tags.php:30
+#, php-format
+msgid "Posted on %s"
+msgstr ""
+
+#: inc/template-tags.php:46
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#: inc/template-tags.php:63 inc/template-tags.php:70
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:66
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: inc/template-tags.php:73
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#: inc/template-tags.php:83
+#, php-format
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#: inc/template-tags.php:100 template-parts/content-page.php:39
+#, php-format
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:38
+msgid "Movies"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:53
+msgid "Movie {#}"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:54
+msgid "Add Movie"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:55
+msgid "Remove Movie"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:58
+msgid "Are you sure you want to remove?"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:64
+msgid "Movie"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:65
+msgid "Enter the url"
+msgstr "URLを入力してください"
+
+#: inc/tk-cmb2-functions.php:88
+msgid "Showcase Images"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:95
+msgid "Image"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:102
+msgid "Add Image"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:103
+msgid "Remove Image"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:104
+msgid "File:"
+msgstr ""
+
+#: inc/tk-cmb2-functions.php:105
+msgid "Download:"
+msgstr ""
+
+#: js/tk-scripts.js:109
+msgid "Cart"
+msgstr "カート"
+
+#: search.php:21
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: single.php:23
+msgid "Previous:"
+msgstr ""
+
+#: single.php:24
+msgid "Next:"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "No Tiles found"
+msgstr "タイルが見つかりません"
+
+#: template-parts/content-none.php:24
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:44
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr ""
+
+#: template-parts/content-page.php:25 template-parts/content.php:53
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content.php:40
+#, php-format
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
