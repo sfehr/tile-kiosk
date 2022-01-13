@@ -185,7 +185,7 @@ function tile_kiosk_scripts() {
 		'max_page' => $wp_query->max_num_pages
 	);
 	// main JS
-	wp_enqueue_script( 'tk-scripts-js', get_template_directory_uri() . '/js/tk-scripts.js', array( 'wp-i18n', 'jquery', 'wpshopify-public' ), _S_VERSION, true );
+	wp_enqueue_script( 'tk-scripts-js', get_template_directory_uri() . '/js/tk-scripts.js', array( 'wp-i18n', 'jquery', 'shopwp-public' ), _S_VERSION, true );
 	wp_localize_script( 'tk-scripts-js', 'sf_ajax_loader_params', $sfAjaxLoaderParams );
 
 	// JS i18n
@@ -878,3 +878,12 @@ function tk_display_footer_menu() {
 }
 add_action( 'wp_footer', 'tk_display_footer_menu' ); 
 */
+
+
+add_filter( 'shopwp_currency_symbol', function( $defaultSymbol ) {
+    return '¥';
+});
+
+add_filter( 'shopwp_currency_code', function( $defaultCode ) {
+    return 'JPY';
+});

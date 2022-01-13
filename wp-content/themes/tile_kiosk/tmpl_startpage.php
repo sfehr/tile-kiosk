@@ -23,6 +23,7 @@ $section_contact_id = tk_get_ID_by_slug( 'contact-section' );
 $showcase_images = tk_get_images( 'tk_showcase_image', $section_head_id, 'itm-showcase' ); // meta_key, post_id, css-class, img-size
 $showcase_svg_maps = tk_get_svg_data( 'tk_svg_maps_image', $section_head_id, 'itm-showcase' ); // meta_key, post_id, css-class, img-size
 $showcase_movies = tk_get_movies( 'tk_movies_group', $section_head_id, 'itm-showcase' ); // meta_key, post_id, css-class, img-size
+$startpage_id = tk_get_ID_by_slug( 'home' );
 ?>
 
 	<main id="primary" class="site-main">
@@ -73,7 +74,8 @@ $showcase_movies = tk_get_movies( 'tk_movies_group', $section_head_id, 'itm-show
 		<section id="tk-tiles" class="page-section">
 		<?php			
 			
-			sf_ajax_loader_handler();
+//			sf_ajax_loader_handler();
+			echo apply_filters( 'the_content', get_post( $startpage_id ) -> post_content );
 		
 		?>
 		</section>

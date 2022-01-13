@@ -1517,20 +1517,20 @@ body.view-info{
     display: grid;
 /*	position: relative; */
 /*  grid-template-columns: var(--grid-setting); */
-	grid-template-columns: repeat( auto-fill, minmax( calc( var(--grid-column) * 4 ), 1fr ) );
+/*	grid-template-columns: repeat( auto-fill, minmax( calc( var(--grid-column) * 4 ), 1fr ) ); */
 	grid-template-rows: var(--grid-setting);
     grid-gap: 0px;
     grid-auto-flow: dense;
 	width: 100%;
 	max-width: unset;
 /*	min-height: calc( var(--grid-column) * 2 ); */
-	min-height: 100vh;
+/* 	min-height: 100vh; */
 	margin-top: 20vh;
 	padding-bottom: 35px;
 	background: white;
 }
 
-/*
+
 .page .wps-items-list
 {
     display: grid;
@@ -1558,22 +1558,33 @@ body.view-info{
 	text-align: center;	
 }
 
+.wps-modal .wps-items-list{
+	display: unset;
+}
+
 /*--------------------------------------------------------------
 # Product
 --------------------------------------------------------------*/
 
-.type-wps_products{
-	opacity: 0;
+.wps-item{
 	transition: opacity ease-in 500ms;
 	
 	position: relative;
 	background-position: center;
 	background-size: contain;
 	min-height: 100%;
+	margin: 0;
+	
 /*	
 	grid-column: span 2;
 	grid-row: span 2;
 */
+}
+
+.wps-component,
+.wps-component-products-pricing
+{
+	margin: 0 !important;
 }
 
 .fade-in{
@@ -1591,7 +1602,7 @@ body.view-info{
 	height: 100%;
 }
 
-.type-wps_products .tk-pricing{
+.wps-item .wps-products-price{
 	position: absolute;
 	top: 100%;
 	display: flex;
@@ -1607,12 +1618,12 @@ body.view-info{
 	background: var(--ui-bg-color);
 }
 
-.type-wps_products .tk-pricing span{
+.wps-item .wps-products-price span{
 	margin: unset;
 }
 
 /* triangle shape */
-.type-wps_products .tk-pricing:after{
+.wps-item .wps-products-price:after{
 	content: "";
 	position: absolute;
 	bottom: 100%;
@@ -1622,8 +1633,12 @@ body.view-info{
 	border-color: transparent transparent var(--ui-bg-color) transparent;
 }
 
-.type-wps_products:not(.modal):hover .tk-pricing{
+.wps-item:not(.modal):hover .wps-products-price{
 	visibility: visible;
+}
+
+.wps-modal-open .wps-item .wps-products-price{
+	display: none;
 }
 
 /* label special */

@@ -62,7 +62,7 @@ jQuery( document ).ready(
 	tk_showcase_interaction(),
 	tk_filter_interaction(),
 	tk_map_svg(),
-	tk_intersection_observer()
+	tk_intersection_observer(),
 	
 );
 
@@ -113,44 +113,44 @@ jQuery( window ).on( 'resize', function() {
  *
  */
 // WP SHOPIFY HOOKS
-wp.hooks.addFilter( 'default.cart.title', 'wpshopify', function( defaultTitle ) {
+wp.hooks.addFilter( 'default.cart.title', 'shopwp', function( defaultTitle ) {
 	return __( 'Cart', tk_get_theme_text_domain() );
 })
-wp.hooks.addFilter( 'cart.lineItem.remove.text', 'wpshopify', function ( defaultText ) {
+wp.hooks.addFilter( 'cart.lineItem.remove.text', 'shopwp', function ( defaultText ) {
 	return tk_i18n.wps_cart_remove;
 });
-wp.hooks.addFilter( 'cart.subtotal.text', 'wpshopify', function ( defaultText ) {
+wp.hooks.addFilter( 'cart.subtotal.text', 'shopwp', function ( defaultText ) {
   return tk_i18n.wps_cart_subtotal;
 });
-wp.hooks.addFilter( 'default.cart.checkout.text', 'wpshopify', function ( defaultCheckoutText ) {
+wp.hooks.addFilter( 'default.cart.checkout.text', 'shopwp', function ( defaultCheckoutText ) {
   return tk_i18n.wps_cart_checkout;
 });
 
 // RENDER PRODUCTS
-wp.hooks.addAction( 'after.payload.update', 'wpshopify', function( itemsState ) {
+wp.hooks.addAction( 'after.payload.update', 'shopwp', function( itemsState ) {
 	tk_after_rendering( itemsState.payloadSettings.postId );
 });
 
 // PRODUCT ADD TO CART
-wp.hooks.addAction( 'after.cart.ready', 'wpshopify', function ( cartState ) {
-	wp.hooks.addAction( 'after.product.addToCart', 'wpshopify', function ( lineItems, variant ) {
+wp.hooks.addAction( 'after.cart.ready', 'shopwp', function ( cartState ) {
+	wp.hooks.addAction( 'after.product.addToCart', 'shopwp', function ( lineItems, variant ) {
 		jQuery( 'body' ).find( '.modal' ).removeClass( 'modal' );
 	});
 });
 
 // CURRENCY
-wp.hooks.addFilter( 'misc.pricing.defaultCurrencyCode', 'wpshopify', function ( defaultCode ) {
+wp.hooks.addFilter( 'misc.pricing.defaultCurrencyCode', 'shopwp', function ( defaultCode ) {
   return 'JPY';
 });
 
 // LEFT IN STOCK
-wp.hooks.addFilter( 'misc.inventory.leftInStock.total', 'wpshopify', function (leftInStockTotal) {
+wp.hooks.addFilter( 'misc.inventory.leftInStock.total', 'shopwp', function (leftInStockTotal) {
   return 1;
 });
 
 // MAX QUANTITY
-wp.hooks.addAction( 'after.cart.ready', 'wpshopify', function ( cartState ) {
-  wp.hooks.addFilter( 'cart.lineItems.maxQuantity', 'wpshopify', function (
+wp.hooks.addAction( 'after.cart.ready', 'shopwp', function ( cartState ) {
+  wp.hooks.addFilter( 'cart.lineItems.maxQuantity', 'shopwp', function (
     maxQuantity,
     cartState,
     lineItem
@@ -245,7 +245,7 @@ function tk_ajaxLoader() {
 				sf_ajax_loader_params.current_page++; // update coutner (post is loaded by scroll)
 			}
 			// update wp shopify render API 
-			wp.hooks.doAction( 'wpshopify.render' );
+			wp.hooks.doAction( 'shopwp.render' );
 			// re-open for further ajax calls
 			tk_canBeLoaded = true;
 		}
