@@ -978,6 +978,7 @@ textarea {
 	
 	/* GRID */
 	--grid-column: 105px;
+	--grid-column: 150px;
 	--grid-setting: repeat( auto-fill, minmax( calc( var(--grid-column) * 2 ), 1fr ) );
 	
 	/* COLORS */
@@ -1619,7 +1620,8 @@ body.view-info{
 }
 
 .wps-item .wps-products-price span{
-	margin: unset;
+	margin: auto;
+	font-weight: var(--type-weight);
 }
 
 /* triangle shape */
@@ -1830,6 +1832,7 @@ body.view-info{
 /* cart icon */
 
 .wps-btn-cart{
+	top: 0 !important;
 	background-image: url(img/TK_icon_cart.svg); 
 }
 
