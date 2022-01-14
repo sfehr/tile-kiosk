@@ -1548,6 +1548,10 @@ body.view-info{
     transform: scale(1.01);    
 }
 
+.wps-items-wrapper{
+	padding: 0 !important;
+}
+
 .wps-items-wrapper,
 [data-wpshopify-component]
 {
@@ -2300,6 +2304,7 @@ body.view-info{
 		height: 100%;
 	}
 	
+	
 }
 
 @media screen and (max-width: 600px) {
@@ -2341,6 +2346,12 @@ body.view-info{
 		height: 100%;	
 	}
 */	
+
+	.wps-modal-open .main-navigation,
+	.js-marquee
+	{
+		display: none;
+	}
 	
 	.modal .tk-description div{
 		margin: 0;
