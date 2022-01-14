@@ -1072,6 +1072,8 @@ a:visited{
 }
 
 .site-header .menu-tk-menu-container{
+	position: absolute;
+	right: 0;
 	margin-right: 5px;
 }
 
@@ -1540,6 +1542,10 @@ body.view-info{
     grid-auto-flow: dense;
 	width: 100%;
 	max-width: unset !important; 
+}
+
+.wps-item img{
+    transform: scale(1.01);    
 }
 
 .wps-items-wrapper,
