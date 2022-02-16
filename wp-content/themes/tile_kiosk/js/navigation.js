@@ -6,7 +6,7 @@
  */
 ( function() {
 	const siteNavigation = document.getElementById( 'site-navigation' );
-	const filterArea = document.getElementById( 'tk-filter' ) // SF: include the filter area
+	//const filterArea = document.getElementById( 'tk-filter' ) // SF: include the filter area
 	
 	// Return early if the navigation don't exist.
 	if ( ! siteNavigation ) {
@@ -46,11 +46,14 @@
 	// Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
 	document.addEventListener( 'click', function( event ) {
 		const isClickInside = siteNavigation.contains( event.target );
-		const isClickInsideFilterArea = filterArea.contains( event.target );
+
+		/*
+		const isClickInsideFilterArea = filterArea.contains( event.target ) || 0;
 		
 		if( isClickInsideFilterArea ){
 			return; // avoid menu from closing when the filter is clicked
 		}
+		*/
 
 		if ( ! isClickInside ) {
 			siteNavigation.classList.remove( 'toggled' );

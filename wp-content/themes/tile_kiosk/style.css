@@ -990,7 +990,7 @@ textarea {
 	--ui-z-index: 5;
 	--border: 1px solid black;
 	--border-r: none;
-	--ui-color-selected: white;
+	--ui-color-selected: darkgray;
 	--ui-color-modal-bg: #efefef;
 	
 	/* TYPOGRAPHY */
@@ -1428,7 +1428,7 @@ body.view-info{
 
 #tk-showcase{
 	width: 100%;
-	transition: opacity ease-in-out 0.5s;
+	transition: opacity ease-in-out 1s;
 }
 
 .detached #tk-showcase{
@@ -1865,6 +1865,19 @@ body.view-info{
 .wps-cart-counter span{
 	top: 39% !important;
 	overflow: unset !important; 
+}
+
+/* storefront */
+
+#shopwp-storefront{
+	max-width: unset !important;
+}
+
+/*.wps-filter:nth-child(1),
+.wps-filter:nth-child(2), */
+.shopwp-storefront-component-filters
+{
+	display: none;
 }
 
 /* cart */

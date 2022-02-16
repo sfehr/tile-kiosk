@@ -31,7 +31,7 @@
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	//define( '_S_VERSION', '1.0.0' );
-	define( '_S_VERSION', '1.0.1' );
+	define( '_S_VERSION', '1.0.2' );
 }
 
 if ( ! function_exists( 'tile_kiosk_setup' ) ) :
@@ -166,6 +166,13 @@ function tile_kiosk_scripts() {
 	wp_enqueue_style( 'tile_kiosk-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'tile_kiosk-style', 'rtl', 'replace' );
 	wp_enqueue_script( 'tile_kiosk-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+
+	/* testing */
+	if( is_page( 'page-for-testing' ) ){ 
+		// shop WP filters
+		wp_enqueue_script( 'shopwp-filters', get_template_directory_uri() . '/js/shopwp-filter.js', array( 'shopwp-public' ), _S_VERSION, true );
+		return;
+	}	
 	
 	// jquery marquee
 	wp_enqueue_script( 'jquery-marquee-js', get_template_directory_uri() . '/js/jquery.marquee.min.js', array( 'jquery' ), _S_VERSION, true );	
@@ -174,7 +181,7 @@ function tile_kiosk_scripts() {
 	wp_enqueue_style( 'slick-js', get_template_directory_uri() . '/css/slick.css', array(), _S_VERSION );
 	// vimeo api
 	wp_enqueue_script( 'vimeo-api', 'https://player.vimeo.com/api/player.js', array(), _S_VERSION, true );
-	
+/*	
 	// Ajax Loader Scripts
 	global $wp_query;
 	$sfAjaxLoaderParams = array(
@@ -185,6 +192,8 @@ function tile_kiosk_scripts() {
 		'current_page' => get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1, // 0 page is initial load, next load will be 2nd page
 		'max_page' => $wp_query->max_num_pages
 	);
+	*/	
+	
 	// main JS
 	wp_enqueue_script( 'tk-scripts-js', get_template_directory_uri() . '/js/tk-scripts.js', array( 'wp-i18n', 'jquery', 'shopwp-public' ), _S_VERSION, true );
 	wp_localize_script( 'tk-scripts-js', 'sf_ajax_loader_params', $sfAjaxLoaderParams );
@@ -196,7 +205,7 @@ function tile_kiosk_scripts() {
 		'wps_cart_checkout' => __( 'Checkout', tk_get_theme_text_domain() ),
 	);
 	wp_localize_script( 'tk-scripts-js', 'tk_i18n', $tk_translation );
-//	wp_set_script_translations( 'tk-scripts-js', tk_get_theme_text_domain(), get_template_directory_uri() . 'languages' );
+	//wp_set_script_translations( 'tk-scripts-js', tk_get_theme_text_domain(), get_template_directory_uri() . 'languages' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -765,6 +774,7 @@ function tk_custom_head(){
 	
 	// for JP typeface
 //	if ( function_exists( 'pll_current_language' ) && ( pll_default_language() != pll_current_language() ) ){	
+	/*
 	print '
 			<script>
 			  (function(d) {
@@ -777,6 +787,7 @@ function tk_custom_head(){
 			  })(document);
 			</script>
 		';
+		*/
 //	}	
 	
 	// Social Media

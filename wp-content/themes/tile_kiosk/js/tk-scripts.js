@@ -113,6 +113,7 @@ jQuery( window ).on( 'resize', function() {
  *
  */
 // WP SHOPIFY HOOKS
+/*
 wp.hooks.addFilter( 'default.cart.title', 'shopwp', function( defaultTitle ) {
 	return __( 'Cart', tk_get_theme_text_domain() );
 })
@@ -149,6 +150,7 @@ wp.hooks.addFilter( 'misc.inventory.leftInStock.total', 'shopwp', function (left
 });
 
 // MAX QUANTITY
+
 wp.hooks.addAction( 'after.cart.ready', 'shopwp', function ( cartState ) {
   wp.hooks.addFilter( 'cart.lineItems.maxQuantity', 'shopwp', function (
     maxQuantity,
@@ -158,6 +160,7 @@ wp.hooks.addAction( 'after.cart.ready', 'shopwp', function ( cartState ) {
     return 1;
   });
 });
+*/
 
 
 
