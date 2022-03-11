@@ -899,3 +899,14 @@ add_filter( 'shopwp_currency_symbol', function( $defaultSymbol ) {
 add_filter( 'shopwp_currency_code', function( $defaultCode ) {
     return 'JPY';
 });
+
+
+
+/** SF:
+ * remove Gutenberg Block Library CSS from frontent
+ */
+function tk_remove_gutenberg_css() {
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+}
+add_action( 'wp_enqueue_scripts', 'tk_remove_gutenberg_css', 100 );
