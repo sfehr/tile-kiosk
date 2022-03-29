@@ -14,7 +14,8 @@ wp.hooks.addFilter(
     ( tags ) => {
           
         const tagEntries = tags.map( ( tag ) => {
-            const conditions = [ 'use', 'color', 'size' ]
+            //const conditions = [ 'use', 'color', 'size' ]
+            const conditions = [ 'use' ]
             if( ! conditions.some( el => tag.includes( el ) ) ){ return }
             const category = tag.split( '?' )[ 0 ]
             const label = tag.split( '?' )[ 1 ]
@@ -29,6 +30,7 @@ wp.hooks.addFilter(
 
 
 /* implement random shuffle */
+/*
 wp.hooks.addAction(
     'on.afterPayloadUpdate', 
     'shopwp', 
@@ -46,3 +48,4 @@ wp.hooks.addAction(
             SHUFFLED = true;
        }, 500 );
 })
+*/

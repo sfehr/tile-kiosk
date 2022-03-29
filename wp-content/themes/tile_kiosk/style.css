@@ -1834,6 +1834,28 @@ body.view-info{
 	right: 50%;
 }
 
+/* React Modal */
+.ReactModal__Content--after-open .wps-item .wps-products-price{
+	display: flex;
+	position: relative;
+	top: unset;
+	align-content: unset;
+	align-items: unset;
+	justify-content: unset;
+	right: unset;
+	width: 100%;
+	height: auto;
+	background: none;
+	visibility: visible;
+}
+.ReactModal__Content--after-open .wps-item .wps-products-price::after{
+	position: relative;
+	border: none;
+}
+.ReactModal__Content--after-open .wps-item .wps-products-price span{
+	margin: 5% 0;
+}
+
 
 /*--------------------------------------------------------------
 # PLUGIN
